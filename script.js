@@ -62,21 +62,31 @@ function draw() {
                 	isFullTextPrinted= true; 
 			
 	// Гиперссылки соцсетей
-	$.font = 'normal 16px comic sans';
+	//$.font = 'normal 16px comic sans';
         links.forEach((link, index) => {
         	let yPosition = textY + ((index + 1) * 30); // Нижняя позиция для ссылок
                 //$.fillText(link.name, textX, yPosition);
+
                 // Создание гиперссылки вокруг текста
                 const hyperLink = document.createElement('a');
                 hyperLink.href = link.link;
-                hyperLink.textContent = link.name;
+                //hyperLink.textContent = link.name;
                 hyperLink.style.position = 'absolute';
                 hyperLink.style.left = `${textX}px`;
                 hyperLink.style.top = `${yPosition}px`;
                 hyperLink.style.color = '#fff';
                 hyperLink.style.cursor = 'pointer';
                 hyperLink.style.textDecoration = 'none';
-                document.body.appendChild(hyperLink);
+                //document.body.appendChild(hyperLink);
+		
+		// Добавляем иконку
+    		const icon = document.createElement('img');
+    		icon.src = `icons/${link.name.toLowerCase()}.svg`; // Путь к иконке
+    		icon.style.width = '24px'; // Размер иконки
+    		icon.style.height = '24px';
+    		hyperLink.appendChild(icon);
+
+	    document.body.appendChild(hyperLink);
         });
         }
 	currentCharIndex++;
